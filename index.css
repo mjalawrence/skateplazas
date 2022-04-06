@@ -18,12 +18,15 @@ header {
 
 header h1 {
     margin: 0;
-    padding: 15px 0;
+    padding: 15px 10px;
     border-bottom: solid white 1px;
 }
 
-.containers {
+main {
+    margin: 0;
+}
 
+.containers {
     margin: 10px;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -56,3 +59,34 @@ p {
     margin: 10px;
 }
 
+@media screen and (max-width: 900px) {
+    .containers {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    header {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .containers {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        font-size: 15px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    p {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    p {
+        font-size: 15px;
+    }
+}
