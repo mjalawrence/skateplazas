@@ -47,7 +47,8 @@ header h1 {
     height: 200px;
     border: solid white 1px;
     background-position: center;
-    background-size: 105%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 p {
