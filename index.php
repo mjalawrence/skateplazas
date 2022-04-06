@@ -39,8 +39,8 @@ $skatePlazas = getAllPlazas($db);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Skate Plazas Worldwide</title>
 </head>
-<body>
-<header>
+<div>
+<header id="header">
         <h1>Skate Plazas Worldwide</h1>
 </header>
 <main>
@@ -86,5 +86,8 @@ $skatePlazas = getAllPlazas($db);
     ?>
     </div>
 </main>
+    <div class="button">
+        <a href="#header">Back to top</a>
+    </div>
 </body>
 </html>

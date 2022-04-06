@@ -37,6 +37,10 @@ main {
     padding: 10px;
     background-color: #476593;
     border: solid white 1px;
+    transition: transform .2s;
+}
+.plazas:hover {
+    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
 }
 
 .plazas h1 {
@@ -57,6 +61,22 @@ main {
 p {
     font-size: 20px;
     margin: 10px;
+}
+
+a {
+    background-color: #D8544B;
+    text-decoration: none;
+    color: #ffffff;
+    padding: 10px;
+    border: solid white 1px;
+    margin: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.button {
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 900px) {
