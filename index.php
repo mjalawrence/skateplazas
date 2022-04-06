@@ -3,6 +3,8 @@
 
 require 'functions.php';
 $db = getDbConnection();
+$newPlaza = submitPlaza($db);
+
 $skatePlazas = getAllPlazas($db);
 
 ?>
@@ -29,46 +31,46 @@ $skatePlazas = getAllPlazas($db);
     ?>
         <div class="plazas">
             <h1>Submit New Plaza</h1>
-            <form>
+            <form method="post">
                 <label>Name of Plaza:
-                    <input type="text" />
+                    <input type="text" name="name"/>
                 </label>
                 <label>Country:
-                    <input type="text" />
+                    <input type="text" name="country"/>
                 </label>
                 <label>City:
-                    <input type="text" />
+                    <input type="text" name="city"/>
                 </label>
                 <label>Year of Construction:
-                    <input type="text" />
+                    <input type="text" name="dob"/>
                 </label>
                 <label>Is it a bust?
                     <label>
-                        <input name="radio" type="radio"/>Yes
+                        <input  type="radio" name="status" value="1" />Yes
                     </label>
                     <label>
-                        <input name="radio" type="radio"/>No
+                        <input type="radio" name="status" value="0" />No
                     </label>
                 </label>
                 <label>Who hangs out there?</label>
                     <label>
-                        <input name="radio" type="radio"/>Only skaters
+                        <input type="radio" name="vibe" value="1" />Only skaters
                     </label>
                     <label>
-                        <input name="radio" type="radio"/>Sketchy people
+                        <input type="radio" name="vibe" value="2" />Sketchy people
                     </label>
                     <label>
-                        <input name="radio" type="radio"/>Lunch breakers
+                        <input type="radio" name="vibe" value="3" />Lunch breakers
                     </label>
                     <label>
-                        <input name="radio" type="radio"/>Tourists
+                        <input type="radio" name="vibe" value="4" />Tourists
                     </label>
                     <label>
-                        <input name="radio" type="radio"/>Everybody: it's a party
+                        <input type="radio" name="vibe" value="5" />Everybody: it's a party
                     </label>
 
                 <label>Paste Photo URL:
-                    <input type="text" />
+                    <input type="text" name="photo"/>
                 </label>
                 <div class="submit">
                     <input type="submit" value="Submit Plaza"/>

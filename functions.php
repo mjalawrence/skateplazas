@@ -57,4 +57,40 @@ function mainPageDisplay (array $skatePlazas): string
     }
     return $result;
 }
+
+
+/**
+* Takes user input and adds to database
+*
+* @param PDO $db
+* @return array|false
+*/
+
+function submitPlaza(PDO $db) {
+    if (isset($_POST['name'])) {
+        $nameInput = $_POST["name"];
+            if($nameInput > 0) {
+                return $nameInput;
+            }
+        $countryInput = $_POST["country"];
+        $cityInput = $_POST["city"];
+        $dobInput = $_POST["dob"];
+        $statusInput = $_POST["status"];
+        $vibeInput = $_POST["vibe"];
+        $photoInput = $_POST["photo"];
+        $query = $db->prepare("INSERT INTO `skateplazas` (`name`, `country`, `city`, `dob`, `status`, `vibe`, `photo`) 
+VALUES (:name, :country, :city, :dob, :status, :vibe, :photo);");
+        $query->execute([
+            ':name' => $nameInput,
+            ':country' => $countryInput,
+            ':city' => $cityInput,
+            ':dob' => $dobInput,
+            ':status' => $statusInput,
+            ':vibe' => $vibeInput,
+            ':photo' => $photoInput
+        ]);
+    }
+
+}
+
 ?>
