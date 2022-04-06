@@ -63,6 +63,37 @@ p {
     margin: 10px;
 }
 
+form {
+    display: grid;
+    grid-template-rows: 1fr;
+    padding: 10px;
+}
+
+label {
+    padding: 5px;
+}
+
+input[type=text] {
+    width: 100%;
+    border-radius: 5px;
+    border: 0;
+    margin-top: 1px;
+}
+
+input[type=submit] {
+    width: 50%;
+    color: #ffffff;
+    background-color: #476593;
+    border: solid white 1px;
+    font-family: 'Josefin Sans', sans-serif;
+    padding: 5px 0;
+}
+
+.submit {
+    margin-top: 10px;
+    text-align: center;
+}
+
 a {
     background-color: #D8544B;
     text-decoration: none;
