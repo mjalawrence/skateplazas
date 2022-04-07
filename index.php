@@ -3,9 +3,8 @@
 
 require 'functions.php';
 $db = getDbConnection();
-$newPlaza = submitPlaza($db);
 
-$skatePlazas = getAllPlazas($db);
+
 
 ?>
 
@@ -19,42 +18,58 @@ $skatePlazas = getAllPlazas($db);
     <title>Skate Plazas Worldwide</title>
 </head>
 <header id="header">
+    <div class="header__bar">
         <h1>Skate Plazas Worldwide</h1>
+    </div>
+    <div class="submit__button__div">
+            <div class="submit__button">
+            <a href="#submit">Submit New Plaza</a>
+            </div>
+    </div>
 </header>
 <main>
-    <div class=containers>
-    <?php
+    <div class="error__message">
+        <?php
+    $newPlaza = submitPlaza($db);
 
+    if (!$newPlaza) {
+
+    }
+    $skatePlazas = getAllPlazas($db);
+        ?>
+    </div>
+    <div class="containers">
+    <?php
     $itLives = mainPageDisplay($skatePlazas);
     echo $itLives;
 
     ?>
-        <div class="plazas">
+        <div class="plazas submit__plaza">
             <h1>Submit New Plaza</h1>
             <form method="post">
                 <label>Name of Plaza:
-                    <input type="text" name="name"/>
+                    <input type="text" name="name" required />
                 </label>
                 <label>Country:
-                    <input type="text" name="country"/>
+                    <input type="text" name="country" required />
                 </label>
                 <label>City:
-                    <input type="text" name="city"/>
+                    <input type="text" name="city" required />
                 </label>
                 <label>Year of Construction:
-                    <input type="text" name="dob"/>
+                    <input type="text" name="dob" required />
                 </label>
                 <label>Is it a bust?
                     <label>
-                        <input  type="radio" name="status" value="1" />Yes
+                        <input  type="radio" name="status" value="0" required/>Yes
                     </label>
                     <label>
-                        <input type="radio" name="status" value="0" />No
+                        <input type="radio" name="status" value="1" />No
                     </label>
                 </label>
                 <label>Who hangs out there?</label>
                     <label>
-                        <input type="radio" name="vibe" value="1" />Only skaters
+                        <input type="radio" name="vibe" value="1" required/>Only skaters
                     </label>
                     <label>
                         <input type="radio" name="vibe" value="2" />Sketchy people
@@ -70,9 +85,9 @@ $skatePlazas = getAllPlazas($db);
                     </label>
 
                 <label>Paste Photo URL:
-                    <input type="text" name="photo"/>
+                    <input type="text" name="photo" required />
                 </label>
-                <div class="submit">
+                <div id="submit" class="submit">
                     <input type="submit" value="Submit Plaza"/>
                 </div>
             </form>
@@ -80,8 +95,8 @@ $skatePlazas = getAllPlazas($db);
     </div>
 
 </main>
-    <div class="button">
-        <a class ="hover_me" href="#header">Back to top</a>
+    <div class="back__button__div">
+        <a href="#header" class="back__button">Back to top</a>
     </div>
 </body>
 </html>

@@ -9,21 +9,50 @@ body {
     font-family: 'Josefin Sans', sans-serif;
 }
 
-header {
+#header {
+    background-color: #ACA355;
+    border-bottom: solid white 1px;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.header__bar {
     font-size: 30px;
-    text-transform: uppercase;
-    background-color: #476593;
-    text-align: center;
+    text-align: right;
 }
 
-header h1 {
+h1 {
+    text-transform: uppercase;
     margin: 0;
+    margin-left: 50px;
     padding: 15px 10px;
-    border-bottom: solid white 1px;
+}
+
+.submit__button__div {
+    text-align: center;
+    padding: 20px;
+    margin-top: 5px;
+}
+
+.submit__button {
+    font-size: 20px;
+    padding: 5px;
+    background-color: #D8544B;
+    border: solid white 1px;
+}
+
+a {
+    text-decoration: none;
+    color: #ffffff;
 }
 
 main {
     margin: 0;
+}
+
+.error__message {
+    text-size: 20px;
+    margin: 10px 20px;
+    background-color: #D8544B;
 }
 
 .containers {
@@ -39,12 +68,13 @@ main {
     border: solid white 1px;
     transition: transform .2s;
 }
+
 .plazas:hover {
-    transform: scale(1.05); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+    transform: scale(1.05);
 }
 
 .plazas h1 {
-    font-size: 35px;
+    font-size: 30px;
     margin: 10px;
     text-align: center;
 }
@@ -61,6 +91,10 @@ main {
 p {
     font-size: 20px;
     margin: 10px;
+}
+
+.submit__plaza:hover {
+    transform: none;
 }
 
 form {
@@ -90,11 +124,16 @@ input[type=submit] {
 }
 
 .submit {
-    margin-top: 10px;
+    margin-top: 15px;
     text-align: center;
 }
 
-a {
+.back__button__div {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.back__button {
     background-color: #D8544B;
     text-decoration: none;
     color: #ffffff;
@@ -105,28 +144,100 @@ a {
     text-align: center;
 }
 
-.button {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-@media screen and (max-width: 900px) {
-    .containers {
-        grid-template-columns: 1fr 1fr;
+@media screen and (max-width: 1185px) {
+    .header__bar {
+        font-size: 27px
     }
 
-    header {
+    h1 {
+        margin-left: 20px;
+    }
+
+    .plazas h1 {
+        font-size: 25px;
+    }
+}
+
+@media screen and (max-width: 1040px) {
+    .header__bar {
+        font-size: 25px
+    }
+
+    .submit__button__div {
+        padding: 15px;
+    }
+
+    .plazas h1 {
         font-size: 20px;
     }
 }
 
-@media screen and (max-width: 600px) {
-    .containers {
+@media screen and (max-width: 990px) {
+    .header__bar {
+        font-size: 23px
+    }
+
+    .submit__button__div {
+        padding: 10px;
+    }
+
+    .plazas h1 {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .header__bar {
+        font-size: 25px;
+        text-align: center;
+    }
+
+    #header {
         grid-template-columns: 1fr;
     }
 
-    header {
-        font-size: 15px;
+    h1 {
+        padding-bottom: 0;
+    }
+
+    .plaza__name__container h1 {
+        padding: 5px;
+    }
+
+    .submit__button__div {
+        padding-top: 0px;
+    }
+    .submit__button {
+        display: inline-block;
+    }
+
+    .containers {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .plazas h1 {
+        font-size: 30px;
+    }
+}
+
+@media screen and (max-width: 760px) {
+    .header__bar {
+        font-size: 22px
+    }
+}
+
+@media screen and (max-width: 680px) {
+    .header__bar {
+        font-size: 20px
+    }
+}
+
+@media screen and (max-width: 610px) {
+    .header__bar {
+        font-size: 16px
+    }
+    .containers {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -140,4 +251,8 @@ a {
     p {
         font-size: 15px;
     }
+    .plazas h1 {
+        font-size: 20px;
+    }
 }
+
