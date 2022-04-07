@@ -35,7 +35,9 @@ function mainPageDisplay (array $skatePlazas): string
     $result = '';
     foreach ($skatePlazas as $plaza) {
         $result .= "<div class=plazas>";
+        $result .= "<div class=plaza__name__container>";
         $result .= "<h1>{$plaza['name']}</h1>";
+        $result .= "</div>";
         $result .= "<div class=box style='background-image: url({$plaza['photo']})'>";
         $result .= "</div>";
         $result .= "<p>Location: {$plaza['city']}, {$plaza['country']}</p>";
@@ -57,4 +59,75 @@ function mainPageDisplay (array $skatePlazas): string
     }
     return $result;
 }
+
+
+/**
+* Takes user input and adds to database
+*
+* @param PDO $db
+* @return array|false
+*/
+
+function submitPlaza(PDO $db) {
+    if (isset($_POST['name'])) {
+        //$datavalid ensures that the if codes run until the end and then decide whether the inputs are acceptable
+        $dataValid = true;
+        $nameInput = $_POST["name"];
+        if (strlen($nameInput) < 2) {
+            echo "<p>Submission Error : Name too short</p>";
+            $dataValid = false;
+        }
+        $countryInput = $_POST["country"];
+        if (strlen($countryInput) < 2) {
+            echo "<p>Submission Error : Country name too short</p>";
+
+            $dataValid = false;
+        }
+        $cityInput = $_POST["city"];
+        if (strlen($cityInput) < 2) {
+            echo "<p>Submission Error : Country name too short</p>";
+
+            $dataValid = false;
+        }
+        $dobInput = $_POST["dob"];
+        if (strlen($dobInput) !== 4) {
+            echo "<p>Submission Error : Please write year as four digits</p>";
+
+            $dataValid = false;
+        }
+        $statusInput = $_POST["status"];
+        if ($statusInput !== '1' && $statusInput !== '0') {
+            echo "<p>Submission Error : No option selected for 'Is it a bust?'</p>";
+
+            $dataValid = false;
+        }
+        $vibeInput = $_POST["vibe"];
+        if ($vibeInput < 1 || $vibeInput > 5) {
+            echo "<p>Submission Error : No option selected for 'Who hangs out there?'</p>";
+
+            $dataValid = false;
+        }
+        $photoInput = $_POST["photo"];
+        if (filter_var($photoInput, FILTER_VALIDATE_URL) === false || $photoInput === '') {
+            echo "<p>Submission Error : Please use a valid photo URL</p>";
+            $dataValid = false;
+        }
+
+        if ($dataValid === true) {
+            $query = $db->prepare("INSERT INTO `skateplazas` (`name`, `country`, `city`, `dob`, `status`, `vibe`, `photo`) 
+VALUES (:name, :country, :city, :dob, :status, :vibe, :photo);");
+
+            $query->execute([
+                ':name' => $nameInput,
+                ':country' => $countryInput,
+                ':city' => $cityInput,
+                ':dob' => $dobInput,
+                ':status' => $statusInput,
+                ':vibe' => $vibeInput,
+                ':photo' => $photoInput
+            ]);
+        }
+    }
+}
+
 ?>
